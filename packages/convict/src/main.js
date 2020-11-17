@@ -73,7 +73,7 @@ const ALLOWED_OPTION_STRICT = 'strict'
 const ALLOWED_OPTION_WARN = 'warn'
 
 function flatten(obj, useProperties) {
-  const stack = Object.keys(obj)
+  const stack = Object.keys(obj).map(k => [k])
   let key
 
   const entries = []
@@ -85,9 +85,9 @@ function flatten(obj, useProperties) {
       if (useProperties) {
         if ('_cvtProperties' in val) {
           val = val._cvtProperties
-          key = key + '._cvtProperties'
+          key.push('_cvtProperties')
         } else {
-          entries.push([key, val])
+          entries.push([key.join('.'), val])
           continue
         }
       }
@@ -96,12 +96,12 @@ function flatten(obj, useProperties) {
       // Don't filter out empty objects
       if (subkeys.length > 0) {
         subkeys.forEach(function(subkey) {
-          stack.push(key + '.' + subkey)
+          stack.push(key.concat([subkey]))
         })
         continue
       }
     }
-    entries.push([key, val])
+    entries.push([key.join('.'), val])
   }
 
   const flattened = {}
@@ -431,7 +431,7 @@ function loadFile(path) {
 
 function walk(obj, path, initializeMissing) {
   if (path) {
-    const ar = path.split('.')
+    const ar = Array.isArray(path) ? cloneDeep(path) : path.split('.')
     while (ar.length) {
       const k = ar.shift()
       if (initializeMissing && obj[k] == null) {

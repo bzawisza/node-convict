@@ -1,6 +1,6 @@
 {
   "author": "Lloyd Hilaiel <lloyd@hilaiel.com> (http://lloyd.io)",
-  "name": "convict",
+  "name": "@atlassian/convict",
   "description": "Featureful configuration management library for Node.js (nested structure, schema validation, etc.)",
   "keywords": [
     "configuration",
@@ -17,7 +17,7 @@
     "yaml",
     "toml"
   ],
-  "version": "6.0.0",
+  "version": "6.0.1-alpha.1",
   "license": "Apache-2.0",
   "homepage": "https://github.com/mozilla/node-convict",
   "repository": {
@@ -35,5 +35,6 @@
   "dependencies": {
     "lodash.clonedeep": "^4.5.0",
     "yargs-parser": "^18.1.3"
-  }
+  },
+  "gitHead": "d345d374498df65397206426d3753fcf5f9701e2"
 }

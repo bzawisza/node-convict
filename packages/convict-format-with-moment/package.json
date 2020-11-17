@@ -9,7 +9,7 @@
     "timestamp",
     "moment"
   ],
-  "version": "6.0.0",
+  "version": "6.0.1-alpha.1",
   "license": "Apache-2.0",
   "homepage": "https://github.com/mozilla/node-convict",
   "repository": {
@@ -26,5 +26,6 @@
   ],
   "dependencies": {
     "moment": "^2.24.0"
-  }
+  },
+  "gitHead": "d345d374498df65397206426d3753fcf5f9701e2"
 }
